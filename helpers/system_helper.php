@@ -1,7 +1,53 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shilisia
- * Date: 3/17/17
- * Time: 3:11 PM
+/*
+ * Redirect To Page
  */
+
+function redirect ($page = FALSE, $message = NULL, $message_type = NULL){
+    If (is_string($page)){
+        $location = $page;
+    }
+    else{
+        $location = $_SERVER['SCRIPT_NAME'];
+    }
+
+    //Check for Message
+    if($message =! NULL){
+        //Set Message
+
+        $_SESSION['message_type'] = $message_type;
+    }
+
+    //Redirect
+    header('location: '.$location);
+    exit;
+
+    /*
+    * Display Message
+    */
+    function displayMessage(){
+        if(!empty($_SESSION['message'])){
+
+            //Assign Message Var
+            $message = $_SESSION['message'];
+
+            if(!empty($_SESSION['message_type'])){
+
+                //Assign Type Var
+                $message_type = $_SESSION['message_type'];
+
+                //Create Output
+                if($message_type == 'error'){
+                    echo '<div class="alert alert-danger' .$message . '</div>';
+                } else{
+                    echo '<div class="alert alert-success' .$message . '</div>';
+                }
+            }
+            //Unset Message
+            unset($_SESSION['message']);
+            unset($_SESSION['message_type']);
+        } else{
+            echo '';
+        }
+    }
+}
