@@ -1,7 +1,18 @@
+<?php include('core/init.php'); ?>
+
 <?php
-/**
- * Created by PhpStorm.
- * User: shilisia
- * Date: 3/17/17
- * Time: 3:15 PM
- */
+ if (isset($_POST['do_login'])){
+     //Get Vars
+     $username = $_POST['username'];
+     $password = md5($_POST['password']);
+
+     //Create User object
+     if($user->login($username,$password)){
+         redirect('index.php','You have been logged in','success');
+     } else{
+         redirect('index.php','That login is invalid','error');
+     }
+ } else{
+     redirect('index.php');
+ }
+?>

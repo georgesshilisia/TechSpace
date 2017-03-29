@@ -1,7 +1,13 @@
+<?php include('core/init.php'); ?>
+
 <?php
-/**
- * Created by PhpStorm.
- * User: shilisia
- * Date: 3/17/17
- * Time: 3:15 PM
- */
+if(isset($_POST['do_logout'])){
+    //Create User Object
+    $user = new User;
+
+    if($user->logout()){
+        redirect('index.php','You are now logged out','success');
+    }
+}else{
+    redirect('index.php');
+}

@@ -27,7 +27,7 @@
                 <?php endif; ?>
                     <h3>Forum Statistics</h3>
                     <ul>
-                        <li>Total Number of Users: <strong>52</strong></strong></li>
+                        <li>Total Number of Users: <strong><?php echo $totalUsers; ?></strong></strong></li>
                         <li>Total Number of Topics: <strong><?php echo $totalTopics; ?></strong></strong></li>
                         <li>Total Number of Categories: <strong><?php echo $totalCategories; ?></strong></strong></li>
                     </ul>
