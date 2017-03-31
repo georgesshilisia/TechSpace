@@ -82,10 +82,17 @@
     </li>
 </ul>
 <h3>Reply To Topic</h3>
-<form>
+<?php if(isLoggedIn()) : ?>
+<form method="=post" action="topic.php?id=<?php echo $topic_id; ?>">
     <div class="form-group">
-        <textarea id="reply" rows="10" cols="80" class="form-control" name="reply"></textarea>
+        <textarea id="reply" rows="10" cols="80" class="form-control" name="body"></textarea>
+        <script>
+            CREDITOR.replace('reply');
+                </script>
     </div>
-    <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+    <button name="do_reply" type="submit" class="btn btn-primary">Submit</button>
 </form>
+<?php else : ?>
+    <p>Please login to reply</p>
+<?php endif ; ?>
 <?php include('includes/footer.php'); ?>

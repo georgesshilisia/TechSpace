@@ -12,6 +12,9 @@
 
     <!-- Custom styles for this template -->
     <link href="<?php echo BASE_URI; ?>templates/css/custom.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="<?php echo BASE_URI; ?>templates/js/bootstrap.js"></script>
+    <script src="<?php echo BASE_URI; ?>templates/js/ckeditor/ckeditor.js"></script>
     <?php
     //Check if title is set, if not assign it
     if(!isset($title)){
@@ -36,8 +39,11 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="index.php">Home</a></li>
+                <?php if(isLoggedIn()) :?>
                 <li><a href="register.php">Create An Account</a></li>
+                <?php else: ?>
                 <li><a href="create.php">Create Topic</a></li>
+                <?php endif; ?>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
